@@ -1,6 +1,6 @@
 # require 'spec_helper'
 
-describe Upload do
+# describe Upload do
 	
-end
+# end
 
