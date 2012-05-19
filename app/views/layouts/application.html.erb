@@ -8,7 +8,20 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+	<div class="row">
+		<div class="span9"><%= yield %></div>
+		<div class="span3">
+			<h2>About This Application</h2>
+			Write a web application (webapp) using Ruby on Rails that reads a dictionary file and allows a user to find anagrams. The webapp should allow for the upload of a text file which will be the dictionary file. The dictionary file consists of a list of words. Each word is on separate line.
+The webapp should provide an input where a user can input a word of their choice. On hitting enter (or clicking a button) the webapp should find all anagrams, if any exist, of the word and display them. If no anagrams are found it should display “No anagrams found for <word>”.
+Please also display timings for loading the dictionary and timings for each anagram set request.
+The user must be able to continually enter new words which the webapp will search for anagrams on until the browser window is closed. The webapp should retain the display of previous results and not clear them after each search.
+You may not use external, third party libraries to do with the loading of the dictionary or anagram solving part of this test.
+Consider the performance of your application if it were to run with a dictionary containing over 100,000 words including longer words than supplied in the sample dictionary.
+		</div>
+	</div>
+</div>
 
 </body>
 </html>
