@@ -36,6 +36,8 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
+# gem 'linecache19', '0.5.12', :path => "~/.rvm/gems/ruby-1.9.3-p0/gems/linecache19-0.5.12/"
+# gem 'ruby-debug-base19', '0.11.25', :path => "~/.rvm/gems/ruby-1.9.3-p0/gems/ruby-debug-base19-0.11.25/"
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do

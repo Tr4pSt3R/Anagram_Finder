@@ -1,4 +1,6 @@
 class Upload < ActiveRecord::Base
-	def self.save(upload)
+	def readfile(path)
+		dictionary_entry = IO.readlines(path)
+		return dictionary_entry
 	end
 end
