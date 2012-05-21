@@ -1,3 +1,4 @@
+require 'fileUtils'
 class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
@@ -36,6 +37,16 @@ class UploadsController < ApplicationController
   def edit
     @upload = Upload.find(params[:id])
   end
+
+def file_upload
+  # tmp = params[:file_upload][:my_file].tempfile
+  file = File.join("upload/dictionary_files", params[:file_upload][:my_file].original_filename)
+end
+
+# def uploadFile
+#   post = Upload.save(params[:upload])
+#   render :text => "File has been uploaded successfully."
+# end
 
   # POST /uploads
   # POST /uploads.json
