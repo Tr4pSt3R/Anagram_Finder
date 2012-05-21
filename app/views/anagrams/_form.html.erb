@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <div class="field">
+    <%= f.label :Search %><br />
+    <%= f.text_field :word %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

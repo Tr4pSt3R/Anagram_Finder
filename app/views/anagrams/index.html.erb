@@ -9,6 +9,7 @@
 
 <% @anagrams.each do |anagram| %>
   <tr>
+    <td><%= anagram.word %></td>
     <td><%= link_to 'Show', anagram %></td>
     <td><%= link_to 'Edit', edit_anagram_path(anagram) %></td>
     <td><%= link_to 'Destroy', anagram, confirm: 'Are you sure?', method: :delete %></td>
@@ -19,3 +20,8 @@
 <br />
 
 <%= link_to 'New Anagram', new_anagram_path %>
+
+<br />
+
+
+

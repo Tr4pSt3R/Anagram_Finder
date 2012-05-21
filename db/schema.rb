@@ -11,16 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521133335) do
+ActiveRecord::Schema.define(:version => 20120521155210) do
 
   create_table "anagrams", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "word"
   end
 
   create_table "uploads", :force => true do |t|
-    t.string   "filename"
-    t.string   "filepath"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

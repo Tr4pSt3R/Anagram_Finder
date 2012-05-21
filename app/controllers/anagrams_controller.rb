@@ -10,6 +10,10 @@ class AnagramsController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   # GET /anagrams/1
   # GET /anagrams/1.json
   def show

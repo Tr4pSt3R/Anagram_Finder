@@ -38,16 +38,10 @@ class Anagram < ActiveRecord::Base
 	# returns: true_perms
 	# return type: Array
 	def word_combos_to(all_word_combos)
-		true_perms = []
-		print all_word_combos.size
-		print all_word_combos[0].size
-		print all_word_combos[0][0].size
+		true_perms = all_word_combos.flatten(1)
 
-		for i in 0..all_word_combos.size
-			for j in 0..(all_word_combos[i][j].size)
-				# print all_word_combos[i][j]
-				# true_perms << all_word_combos[i][j]
-			end
+		for i in 0..true_perms.size
+			true_perms[i].join
 		end
 
 		return true_perms #.join
@@ -64,6 +58,15 @@ class Anagram < ActiveRecord::Base
 		# i+=1
 		# end
 		# return true_perms
+	end
+
+	def find_all_anagrams(all_word_combos, dictionary)
+		anagrams = []
+		start=Time.now
+			anagrams = all_word_combos & dictionary
+		stop=Time.now
+		time_taken = stop - start
+		return anagrams
 	end
 
 	# Aim: Find anagrams
