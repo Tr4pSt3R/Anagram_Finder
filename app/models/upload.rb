@@ -3,7 +3,8 @@
 
 class Upload < ActiveRecord::Base
 
-	after_create :write_uploaded_file
+	# after_create :write_uploaded_file
+	# @file_contents
 
 	FILE_STORE = "./upload/dictionary_files/"
 	# Aim: Reads a dictionary File
@@ -14,18 +15,27 @@ class Upload < ActiveRecord::Base
 		return dictionary_entry
 	end
 
-	def inputfile=(input)
-		@file_contents = input
+	def uploaded_file=(input)
+		@file_contents = input.content_type
+		self.filename = input.original_filename
 	end
 
-	#
-	def write_uploaded_file(data = nil)
-		# 
-		# contents = data || @file_contents.read
+	def uploaded_file
+		self.filename
+	end
 
-		path = File.join(Upload::FILE_STORE, self.filename)
+	# def contents
+	# 	File.open(File.join(self.filepath, self.filename))
+	# end
+
+	#
+	def write_uploaded_file(input)
+		# contents = @file_contents.read
+		#define file storage path
+		filename = input.original_filename
+		path = File.join(Upload::FILE_STORE, filename)
 		# write the file
-		File.open(path, "wb") { |file| file.write() }
+		File.open(path, "wb") { |file| file.write(input.read) }
 	end
 	# def self.save(upload)
 	# 	name = upload['datafile'].original_filename

@@ -48,12 +48,21 @@ class UploadsController < ApplicationController
   def create
     # @upload = Upload.new(params[:uploaded_file])
     # OPTIMIZE Skinny Controller, Fat Model?
+    # filename = params[:upload][:uploaded_file].original_filename
+    # filetype = params[:upload][:uploaded_file].content_type
+    # filesize = (params[:upload][:uploaded_file].tempfile).size
+    # @upload = Upload.new({:filename => filename, :filetype => filetype, :filesize => filesize})
+
+    # Upload.write_uploaded_file(@upload)
+
+    # @upload = Upload.new(params[:uploaded_file])
     filename = params[:upload][:uploaded_file].original_filename
     filetype = params[:upload][:uploaded_file].content_type
     filesize = (params[:upload][:uploaded_file].tempfile).size
+    file     = params[:upload][:uploaded_file].tempfile
     @upload = Upload.new({:filename => filename, :filetype => filetype, :filesize => filesize})
 
-    # Upload.write_uploaded_file(@upload)
+    @upload.write_uploaded_file(file)
 
     respond_to do |format|
       if @upload.save
