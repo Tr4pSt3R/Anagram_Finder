@@ -38,20 +38,22 @@ class UploadsController < ApplicationController
     @upload = Upload.find(params[:id])
   end
 
-def file_upload
-  # tmp = params[:file_upload][:my_file].tempfile
-  file = File.join("upload/dictionary_files", params[:file_upload][:my_file].original_filename)
-end
-
-# def uploadFile
-#   post = Upload.save(params[:upload])
-#   render :text => "File has been uploaded successfully."
-# end
+  # TODO: Optimize
+  # def uploadFile
+  #   post = Upload.write_uploaded_file(params[:upload])
+  # end
 
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.new(params[:upload])
+    # @upload = Upload.new(params[:uploaded_file])
+    # OPTIMIZE Skinny Controller, Fat Model?
+    filename = params[:upload][:uploaded_file].original_filename
+    filetype = params[:upload][:uploaded_file].content_type
+    filesize = (params[:upload][:uploaded_file].tempfile).size
+    @upload = Upload.new({:filename => filename, :filetype => filetype, :filesize => filesize})
+
+    # Upload.write_uploaded_file(@upload)
 
     respond_to do |format|
       if @upload.save

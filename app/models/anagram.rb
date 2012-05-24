@@ -1,6 +1,13 @@
 class Anagram < ActiveRecord::Base
+
+	# FIXME:  => #<Anagram not initialized> in rails console
+	# def initialize
+	# 	@time_taken = 0
+	# end
+
 	# Aim: Given a word return all possible combinations
 	# param: word
+	# TODO: Rename vars and class appropriately
 	def word_combos(word)
 		word = word.chars.to_a
 		all_permutations = []
@@ -65,7 +72,7 @@ class Anagram < ActiveRecord::Base
 		start=Time.now
 			anagrams = all_word_combos & dictionary
 		stop=Time.now
-		time_taken = stop - start
+		@time_taken = stop - start
 		return anagrams
 	end
 
