@@ -1,6 +1,3 @@
-# TODO: Is ftools required to be declared?
-# require 'ftools'
-
 class Upload < ActiveRecord::Base
 
 	# after_create :write_uploaded_file
@@ -15,27 +12,27 @@ class Upload < ActiveRecord::Base
 		return dictionary_entry
 	end
 
-	def uploaded_file=(input)
-		@file_contents = input.content_type
-		self.filename = input.original_filename
-	end
+	# def uploaded_file=(input)
+	# 	@file_contents = input.content_type
+	# 	self.filename = input.original_filename
+	# end
 
-	def uploaded_file
-		self.filename
-	end
+	# def uploaded_file
+	# 	self.filename
+	# end
 
 	# def contents
 	# 	File.open(File.join(self.filepath, self.filename))
 	# end
 
 	#
-	def write_uploaded_file(input)
+	def write_uploaded_file(uploaded_file, data)
 		# contents = @file_contents.read
 		#define file storage path
-		filename = input.original_filename
+		filename = data['filename']
 		path = File.join(Upload::FILE_STORE, filename)
 		# write the file
-		File.open(path, "wb") { |file| file.write(input.read) }
+		File.open(path, "wb") { |file| file.write(uploaded_file.read) }
 	end
 	# def self.save(upload)
 	# 	name = upload['datafile'].original_filename

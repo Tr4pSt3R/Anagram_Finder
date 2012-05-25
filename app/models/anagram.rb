@@ -1,4 +1,5 @@
 class Anagram < ActiveRecord::Base
+	has_one :upload, :dependent => :destroy
 
 	# FIXME:  => #<Anagram not initialized> in rails console
 	# def initialize

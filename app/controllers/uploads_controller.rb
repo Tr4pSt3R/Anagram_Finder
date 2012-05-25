@@ -1,4 +1,3 @@
-require 'fileUtils'
 class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
@@ -62,7 +61,8 @@ class UploadsController < ApplicationController
     file     = params[:upload][:uploaded_file].tempfile
     @upload = Upload.new({:filename => filename, :filetype => filetype, :filesize => filesize})
 
-    @upload.write_uploaded_file(file)
+    data = {'filename' => filename}
+    @upload.write_uploaded_file(file, data)
 
     respond_to do |format|
       if @upload.save
